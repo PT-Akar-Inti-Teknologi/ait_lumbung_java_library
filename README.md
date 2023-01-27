@@ -43,6 +43,40 @@ public class MainApplication {
 
 ```
 
+Sebelum menggunakan library tambahkan property pada aplikasi anda, seperti contoh dibawahini:
+
+file yml:
+```yaml
+filestorage:
+  platform: s3
+```
+
+atau file .properties:
+
+```properties
+filestorage.platform: s3
+```
+
+value bisa dipilih berdasarkan code dibawah ini:
+
+|code|platform|
+|----|--------|
+|   `local` | Local Server|
+|   `S3`    | AWS S3|
+|   `AZURE`  | Azure Cloud Storage|
+|   `OSS`    | Alibaba OSS|
+|   `GCS`    | Google Cloud Storage|
+|   `HCP`    | Hitachi Cloud Platform|
+
+setiap platform memiliki properties yang berbeda, detail dapat dilihat di segment masing-masing platform:
+
+* [Local Storage] (#local-storage)
+* [Google Cloud Storage] (#google-cloud-storage)
+* [AWS S3] (#aws-s3)
+* [Alibaba OSS] (#alibaba-oss)
+* [Azure Blob Storage] (#azure-blob-storage)
+* [Hitachi Cloud Platform Storage] (#hitachi-cloud-platform-storage)
+
 untuk menggunakan library ini cukup menambahkan **_FileStorageService_** pada service yang membutuhkan upload file.
 
 berikut contoh cara penggunaan library lumbung:
@@ -112,7 +146,9 @@ dan fungsi masing-masing dari method itu, yaitu:
 |`downloadFile`|`ByteArrayResource`|Method untuk melakukan download file, dan return berupa file yang dipake controller untuk mendownload filenya|
 |`deleteFile`|`void`|Method untuk menghapus file yang ada pada storage|
 
-### **> Local Storage <**
-### **> Google Cloud Storage <**
-### **> AWS S3 <**
-### **> Alibaba OSS <**
+## Local Storage 
+## Google Cloud Storage 
+## AWS S3
+## Alibaba OSS
+## Azure Blob Storage
+## Hitachi Cloud Platform Storage 
