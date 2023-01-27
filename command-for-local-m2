@@ -1,0 +1,2 @@
+mvn install:install-file -Dfile="TargetJar" -DgroupId=org.ait.library -DartifactId=lum
+bung -Dversion=0.0.1-BETA -Dpackaging=jar -DpomFile="TargetPom"
