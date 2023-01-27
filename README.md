@@ -1,4 +1,5 @@
 # **Lumbung**
+
 by AIT
 
 author: Bintang AIT
@@ -6,6 +7,7 @@ author: Bintang AIT
 Lumbung adalah sebuah libary utility yang digunakan untuk hal-hal yang berkaitan dengan Upload dan download File.
 
 ### **Type Storage:**
+
 1. Local Storage
 2. Google Cloud Storage
 3. AWS S3
@@ -19,11 +21,12 @@ Lumbung adalah sebuah libary utility yang digunakan untuk hal-hal yang berkaitan
 
 ## **How To Used:**
 
-###Requirement
+## Requirement
+
 - Java 11
 - Spring framework
 
-####Get Started
+### Get Started
 
 tambahkan ***@EnableConfigurationProperties*** pada main class project anda
 
@@ -35,17 +38,18 @@ contoh:
 @EnableConfigurationProperties
 public class MainApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MainApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(MainApplication.class, args);
+  }
 
 }
 
 ```
 
-Sebelum menggunakan library tambahkan property pada aplikasi anda, seperti contoh dibawahini:
+Sebelum menggunakan library tambahkan property pada aplikasi anda, seperti contoh dibawah ini:
 
 file yml:
+
 ```yaml
 filestorage:
   platform: s3
@@ -54,7 +58,7 @@ filestorage:
 atau file .properties:
 
 ```properties
-filestorage.platform: s3
+filestorage.platform:s3
 ```
 
 value bisa dipilih berdasarkan code dibawah ini:
@@ -96,19 +100,19 @@ public class TestController {
   }
 
   @GetMapping("/get-public-url/{id}")
-  public ResponseEntity<String> getPublicUrlFile(@PathVariable String id){
-    return ResponseEntity.ok(fileStorageService.getPublicUrlFile(id,DIR));
+  public ResponseEntity<String> getPublicUrlFile(@PathVariable String id) {
+    return ResponseEntity.ok(fileStorageService.getPublicUrlFile(id, DIR));
   }
 
   @GetMapping("/download/{id}")
-  public ResponseEntity<Resource> downloadFile(@PathVariable String id){
+  public ResponseEntity<Resource> downloadFile(@PathVariable String id) {
 
     HttpHeaders headers = new HttpHeaders();
     headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
     headers.add("Pragma", "no-cache");
     headers.add("Expires", "0");
 
-    ByteArrayResource resource = fileStorageService.downloadFile(id,DIR);
+    ByteArrayResource resource = fileStorageService.downloadFile(id, DIR);
 
     return ResponseEntity.ok()
         .headers(headers)
@@ -118,14 +122,15 @@ public class TestController {
   }
 
   @DeleteMapping("/delete/{id}")
-  public ResponseEntity<String> deleteFile(@PathVariable String id){
-    fileStorageService.deleteFile(id,DIR);
+  public ResponseEntity<String> deleteFile(@PathVariable String id) {
+    fileStorageService.deleteFile(id, DIR);
     return ResponseEntity.ok("Sukses");
   }
 }
 ```
 
-bisa dilihat contoh di atas, terdapat 4 functuin yang terdapat pada **_FileStorageService_**, yaitu:
+bisa dilihat contoh di atas, terdapat 4 function yang terdapat pada **_FileStorageService_**, yaitu:
+
 - String uploadFile(String fileId, MultipartFile file, String fileDir)
 - String getPublicUrlFile(String fileId, String fileDir)
 - ByteArrayResource downloadFile(String fileId, String fileDir)
@@ -142,13 +147,44 @@ dan fungsi masing-masing dari method itu, yaitu:
 |method|return|kegunaan|
 |------|------|--------|
 |`uploadFile`|`String`|Method untuk melakukan upload file, dan return berupa `fileId`|
-|`getPublicUrlFile`|`String`|Method untuk mendapatkan link url yang dapat diakses public, dan return berpupa `url`. *note: beberapa storage tidak support fungsi ini*|
+|`getPublicUrlFile`|`String`|Method untuk mendapatkan link url yang dapat diakses public, dan return berpupa `url`. *
+note: beberapa storage tidak support fungsi ini*|
 |`downloadFile`|`ByteArrayResource`|Method untuk melakukan download file, dan return berupa file yang dipake controller untuk mendownload filenya|
 |`deleteFile`|`void`|Method untuk menghapus file yang ada pada storage|
 
-## Local Storage 
-## Google Cloud Storage 
+## Local Storage
+
+untuk menggunakan platform local storage bisa tambahkan properties berikut:
+
+.yaml:
+
+```yaml
+localstorage:
+  filepath: your directory
+  access-public: true
+  public-base-url: your base url
+```
+
+.properties:
+
+```properties
+localstorage.filepath=your directory
+localstorage.access-public=true
+localstorage.public-base-url=your base url
+```
+
+|<div style="width:120px">property</div>|tipe data|kegunaan|
+|-----------------|---------|--------|
+|`filepath`|`String`|Direktori file yang ada diserver, yang akan menjadi lokasi disimpannya file|
+|`access-public`|`boolean`|Property yang menandakan file dapat di akses public atau tidak. (contoh: file disimpan pada direktori `nginx` yang dapat di akses public)|
+|`public-base-url`|`String`|`letak base host domain untuk mendapatkan file secara public url. (formula: baseDomain+ fileDir+fileId)
+
+## Google Cloud Storage
+
 ## AWS S3
+
 ## Alibaba OSS
+
 ## Azure Blob Storage
+
 ## Hitachi Cloud Platform Storage 
