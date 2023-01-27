@@ -1,0 +1,60 @@
+
+#Platform Storage
+#if not specific will return error
+#   'local' => Local Server
+#   'S3'    => AWS S3
+#   'AZURE'  => Azure Cloud Storage
+#   'OSS'    => Alibaba OSS
+#   'GCS'    => Google Cloud Storage
+#   'HCP'    => Hitachi Cloud Platform
+
+filestorage:
+  platform: local
+
+
+# Local Storage
+#if platform == local
+# filepath: directory where saving file
+# access-public: if directory file can accesses on public
+# public-base-url: url public for get file from public internet
+localstorage:
+  filepath: E:/Workspace/Inspira/A Module Project/File Storage
+  access-public: false
+  public-base-url: http://localhost/
+
+# Alibaba OSS Storage
+alibabaoss:
+  endpoint: xxx.com
+  access-key-id: xxx
+  access-key-secret: xxx
+  bucket-name: bucketname
+  bucket-key: bucketkey
+
+# Google Cloud Storage
+googlestorage:
+  config-file: gcp-account-file.json
+  project-id: xxxx
+  bucket-id: bucket-id
+  dir-name: dir-name
+
+# Amazon S3
+amazon:
+  access-key: xxx
+  aws-region: xxx
+  aws-secret-key: xxx
+  bucket-name: xxxx
+  access-public: false
+
+# Azure Blob Storage
+azure:
+  endpoint: https://<storage-account-name>.blob.core.windows.net/
+  blob-container: blob-container
+  client-id: client-id
+  client-secret: client-secret
+  tenant-id: tenant-id
+
+# HCP Storage
+hcp:
+  endpoint: xxx
+  username: username
+  password: password

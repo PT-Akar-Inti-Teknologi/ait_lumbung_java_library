@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.ait.library</groupId>
+    <artifactId>lumbung</artifactId>
+    <version>0.0.1-BETA</version>
+    <name>File Storage</name>
+    <description>File Storage</description>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>11</java.version>
+        <google.cloud.sdk.version>2.16.0</google.cloud.sdk.version>
+        <aws.s3.sdk.version>2.19.18</aws.s3.sdk.version>
+        <azure.sdk.bom.version>1.2.8</azure.sdk.bom.version>
+        <azure.sdk.identity.version>1.7.3</azure.sdk.identity.version>
+        <azure.sdk.blob.version>12.20.1</azure.sdk.blob.version>
+        <aliyun.sdk.version>3.16.0</aliyun.sdk.version>
+        <hcp.feign.version>12.1</hcp.feign.version>
+        <hcp.openfeign.version>3.1.5</hcp.openfeign.version>
+        <commons.fileupload.version>1.4</commons.fileupload.version>
+        <lombok.version>1.18.24</lombok.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.7.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+
+        </dependency>
+
+        <!--    Google Cloud Storage    -->
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-storage</artifactId>
+            <version>${google.cloud.sdk.version}</version>
+
+        </dependency>
+        <!--    Google Cloud Storage    -->
+
+        <!--    AWS s3    -->
+        <dependency>
+            <groupId>software.amazon.awssdk</groupId>
+            <artifactId>s3</artifactId>
+            <version>${aws.s3.sdk.version}</version>
+
+        </dependency>
+        <!--    AWS s3    -->
+
+        <!--    Azure Blob Storage    -->
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-sdk-bom</artifactId>
+            <version>${azure.sdk.bom.version}</version>
+
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-storage-blob</artifactId>
+            <version>${azure.sdk.blob.version}</version>
+
+        </dependency>
+
+        <dependency>
+            <groupId>com.azure</groupId>
+            <artifactId>azure-identity</artifactId>
+            <version>${azure.sdk.identity.version}</version>
+
+        </dependency>
+        <!--    Azure Blob Storage    -->
+
+        <!--    Alibaba OSS    -->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>${aliyun.sdk.version}</version>
+
+        </dependency>
+        <!--    Alibaba OSS    -->
+
+        <!--   Feign For Implementation HCP     -->
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-core</artifactId>
+            <version>${hcp.feign.version}</version>
+
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-jackson</artifactId>
+            <version>${hcp.feign.version}</version>
+
+        </dependency>
+        <dependency>
+            <groupId>io.github.openfeign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+            <version>${hcp.feign.version}</version>
+
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>${hcp.openfeign.version}</version>
+
+        </dependency>
+        <!--   Feign For Implementation HCP     -->
+
+
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${commons.fileupload.version}</version>
+
+        </dependency>
+
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

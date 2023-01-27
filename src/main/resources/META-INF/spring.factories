@@ -1,0 +1,16 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+org.ait.library.lumbung.config.FileStorageAutoConfiguration,\
+org.ait.library.lumbung.modules.selector.config.FilestorageConfig,\
+org.ait.library.lumbung.modules.selector.config.FilestorageProp,\
+org.ait.library.lumbung.modules.storageengine.alibabaossstorage.config.AlibabaOssConfig,\
+org.ait.library.lumbung.modules.storageengine.alibabaossstorage.config.AlibabaOssProp,\
+org.ait.library.lumbung.modules.storageengine.awss3storage.config.AwsS3Config,\
+org.ait.library.lumbung.modules.storageengine.awss3storage.config.AwsS3Prop,\
+org.ait.library.lumbung.modules.storageengine.azurestorage.config.AzureStorageConfig,\
+org.ait.library.lumbung.modules.storageengine.azurestorage.config.AzureStorageProp,\
+org.ait.library.lumbung.modules.storageengine.googlestorage.config.GoogleStorageConfig,\
+org.ait.library.lumbung.modules.storageengine.googlestorage.config.GoogleStorageProp,\
+org.ait.library.lumbung.modules.storageengine.hcpstorage.config.HcpStorageConfig,\
+org.ait.library.lumbung.modules.storageengine.hcpstorage.config.HcpStorageProp,\
+org.ait.library.lumbung.modules.storageengine.localstorage.config.LocalStorageProp,\
+org.ait.library.lumbung.modules.storageengine.localstorage.config.LocalStorageConfig
