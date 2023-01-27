@@ -7,6 +7,7 @@ import org.ait.library.lumbung.modules.storageengine.awss3storage.service.AwsS3S
 import org.ait.library.lumbung.shared.enums.PlatformEnum;
 import org.ait.library.lumbung.shared.serviceskelenton.EngineStorageService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
@@ -37,7 +38,7 @@ public class AwsS3Config {
   }
 
   @Bean
-  @ConditionalOnClass(EngineStorageService.class)
+  @ConditionalOnProperty(prefix = "filestorage",name = "platform",havingValue = "S3")
   public EngineStorageService awsS3StorageService(AwsS3Prop awsS3Prop) {
     if (config.getPlatform() == PlatformEnum.S3) {
       log.info("AwsS3StorageService Created");

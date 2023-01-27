@@ -11,6 +11,7 @@ import org.ait.library.lumbung.modules.storageengine.azurestorage.service.AzureS
 import org.ait.library.lumbung.shared.enums.PlatformEnum;
 import org.ait.library.lumbung.shared.serviceskelenton.EngineStorageService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -36,7 +37,7 @@ public class AzureStorageConfig {
   }
 
   @Bean
-  @ConditionalOnClass(EngineStorageService.class)
+  @ConditionalOnProperty(prefix = "filestorage",name = "platform",havingValue = "AZURE")
   public EngineStorageService azureStorageService() {
     if (config.getPlatform() == PlatformEnum.AZURE) {
       log.info("AzureStorageService Created");

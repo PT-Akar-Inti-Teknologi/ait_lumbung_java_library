@@ -6,7 +6,7 @@ import org.ait.library.lumbung.config.GlobalConfig;
 import org.ait.library.lumbung.modules.storageengine.localstorage.service.LocalStorageService;
 import org.ait.library.lumbung.shared.enums.PlatformEnum;
 import org.ait.library.lumbung.shared.serviceskelenton.EngineStorageService;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,7 +18,7 @@ public class LocalStorageConfig {
   private final GlobalConfig config;
 
   @Bean
-  @ConditionalOnClass(EngineStorageService.class)
+  @ConditionalOnProperty(prefix = "filestorage", name = "platform", havingValue = "local")
   public EngineStorageService localStorageService(LocalStorageProp localStorageProp) {
     if (config.getPlatform() == PlatformEnum.LOCAL) {
       log.info("LocalStorageService Created");

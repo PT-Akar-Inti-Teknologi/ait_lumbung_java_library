@@ -13,6 +13,7 @@ import org.ait.library.lumbung.shared.enums.PlatformEnum;
 import org.ait.library.lumbung.shared.serviceskelenton.EngineStorageService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,7 +45,7 @@ public class GoogleStorageConfig {
   }
 
   @Bean
-  @ConditionalOnClass(EngineStorageService.class)
+  @ConditionalOnProperty(prefix = "filestorage",name = "platform",havingValue = "GCS")
   public EngineStorageService googleStorageService(GoogleStorageProp googleStorageProp) {
     if (config.getPlatform() == PlatformEnum.GCS) {
       log.info("GoogleStorageService Created");

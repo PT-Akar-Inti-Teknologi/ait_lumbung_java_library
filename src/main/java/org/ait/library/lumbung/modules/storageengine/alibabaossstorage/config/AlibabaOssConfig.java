@@ -9,6 +9,7 @@ import org.ait.library.lumbung.modules.storageengine.alibabaossstorage.service.A
 import org.ait.library.lumbung.shared.enums.PlatformEnum;
 import org.ait.library.lumbung.shared.serviceskelenton.EngineStorageService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,7 +28,7 @@ public class AlibabaOssConfig {
   }
 
   @Bean
-  @ConditionalOnClass(EngineStorageService.class)
+  @ConditionalOnProperty(prefix = "filestorage",name = "platform",havingValue = "OSS")
   public EngineStorageService alibabaStorageService(AlibabaOssProp alibabaOssProp) {
     if (config.getPlatform() == PlatformEnum.OSS) {
       log.info("AlibabaStorageService Created");
