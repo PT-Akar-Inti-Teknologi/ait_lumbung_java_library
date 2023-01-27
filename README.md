@@ -70,12 +70,12 @@ value bisa dipilih berdasarkan code dibawah ini:
 
 setiap platform memiliki properties yang berbeda, detail dapat dilihat di segment masing-masing platform:
 
-* [Local Storage] (#local-storage)
-* [Google Cloud Storage] (#google-cloud-storage)
-* [AWS S3] (#aws-s3)
-* [Alibaba OSS] (#alibaba-oss)
-* [Azure Blob Storage] (#azure-blob-storage)
-* [Hitachi Cloud Platform Storage] (#hitachi-cloud-platform-storage)
+* [Local Storage](#local-storage)
+* [Google Cloud Storage](#google-cloud-storage)
+* [AWS S3](#aws-s3)
+* [Alibaba OSS](#alibaba-oss)
+* [Azure Blob Storage](#azure-blob-storage)
+* [Hitachi Cloud Platform Storage](#hitachi-cloud-platform-storage)
 
 untuk menggunakan library ini cukup menambahkan **_FileStorageService_** pada service yang membutuhkan upload file.
 
