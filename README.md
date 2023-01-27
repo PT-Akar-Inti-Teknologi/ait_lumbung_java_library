@@ -10,6 +10,8 @@ Lumbung adalah sebuah libary utility yang digunakan untuk hal-hal yang berkaitan
 2. Google Cloud Storage
 3. AWS S3
 4. Alibaba OSS
+5. Azure Blob Storage
+6. Hitachi Cloud Platform Storage
 
 ## **Maven:**
 
