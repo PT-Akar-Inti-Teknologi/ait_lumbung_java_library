@@ -191,7 +191,6 @@ amazon:
   aws-secret-key: xxx
   aws-region: ap-southeast-3
   bucket-name: ait-fileservice-demo
-  access-public: false
 ```
 
 .properties:
@@ -201,7 +200,6 @@ amazon.access-key: xxx
 amazon.aws-secret-key: xxx
 amazon.aws-region: ap-southeast-3
 amazon.bucket-name: ait-fileservice-demo
-amazon.access-public: false
 ```
 
 ###how to get value?
@@ -209,8 +207,7 @@ amazon.access-public: false
 link: [Link](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html)
 
 ###Important note
-- Untuk penggunaan GET Public URL, jika return berupa blank, maka item tidak dapat di akses public
-- Untuk upload dan access-public true maka harus
+- Untuk upload public access perlu di set dari bucket s3
 
 ## Alibaba OSS
 
