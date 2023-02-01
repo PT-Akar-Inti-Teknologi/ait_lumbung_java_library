@@ -54,13 +54,6 @@ public class AwsS3StorageService extends EngineStorageAbstract {
   }
 
   public PutObjectRequest createObjectRequest(String fileId) {
-    if (awsS3Prop.isAccessPublic()) {
-      return PutObjectRequest.builder()
-          .bucket(awsS3Prop.getBucketName())
-          .key(fileId)
-          .acl("public-read")
-          .build();
-    }
     return PutObjectRequest.builder()
         .bucket(awsS3Prop.getBucketName())
         .key(fileId)
@@ -94,12 +87,8 @@ public class AwsS3StorageService extends EngineStorageAbstract {
   @Override
   public String getPublicUrl(String fileId, String fileDir) throws StorageFileNotFoundException {
     log.info("AWS Get Public URL");
-
-    if (awsS3Prop.isAccessPublic()) {
-      return s3Client.utilities().getUrl(builder -> builder.bucket(awsS3Prop.getBucketName())
-          .key(FileUtils.getBasePath(fileDir) + fileId)).toExternalForm();
-    }
-    return "";
+    return s3Client.utilities().getUrl(builder -> builder.bucket(awsS3Prop.getBucketName())
+        .key(FileUtils.getBasePath(fileDir) + fileId)).toExternalForm();
   }
 
   @Override
