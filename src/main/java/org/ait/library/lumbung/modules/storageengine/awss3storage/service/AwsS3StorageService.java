@@ -1,6 +1,7 @@
 package org.ait.library.lumbung.modules.storageengine.awss3storage.service;
 
 import java.io.IOException;
+import java.time.Duration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.ait.library.lumbung.modules.storageengine.awss3storage.config.AwsS3Prop;
@@ -19,6 +20,9 @@ import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
 import software.amazon.awssdk.services.s3.model.GetObjectResponse;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
+import software.amazon.awssdk.services.s3.presigner.S3Presigner;
+import software.amazon.awssdk.services.s3.presigner.model.GetObjectPresignRequest;
+import software.amazon.awssdk.services.s3.presigner.model.PresignedGetObjectRequest;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -27,6 +31,8 @@ public class AwsS3StorageService extends EngineStorageAbstract {
   private final S3Client s3Client;
 
   private final AwsS3Prop awsS3Prop;
+
+  private final S3Presigner s3Presigner;
 
   @Override
   protected PlatformEnum getPlatform() {
@@ -87,8 +93,22 @@ public class AwsS3StorageService extends EngineStorageAbstract {
   @Override
   public String getPublicUrl(String fileId, String fileDir) throws StorageFileNotFoundException {
     log.info("AWS Get Public URL");
-    return s3Client.utilities().getUrl(builder -> builder.bucket(awsS3Prop.getBucketName())
-        .key(FileUtils.getBasePath(fileDir) + fileId)).toExternalForm();
+
+    GetObjectRequest request = GetObjectRequest.builder()
+        .bucket(awsS3Prop.getBucketName())
+        .key(FileUtils.getBasePath(fileDir) + fileId)
+        .build();
+
+    GetObjectPresignRequest getObjectPresignRequest = GetObjectPresignRequest.builder()
+        .signatureDuration(Duration.ofMinutes(awsS3Prop.getPresignUrlDuration()))
+        .getObjectRequest(request)
+        .build();
+
+    PresignedGetObjectRequest presignedGetObjectRequest = s3Presigner.presignGetObject(getObjectPresignRequest);
+    String theUrl = presignedGetObjectRequest.url().toString();
+    log.info("Presigned URL: " + theUrl);
+
+    return theUrl;
   }
 
   @Override

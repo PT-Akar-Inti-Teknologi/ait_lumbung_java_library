@@ -43,6 +43,7 @@ amazon:
   aws-region: xxx
   aws-secret-key: xxx
   bucket-name: xxxx
+  presign-url-duration: 60
 
 # Azure Blob Storage
 azure:

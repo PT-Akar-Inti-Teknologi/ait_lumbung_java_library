@@ -15,5 +15,6 @@ public class AwsS3Prop {
   private String awsRegion;
   private String awsSecretKey;
   private String bucketName;
+  private int presignUrlDuration;
 
 }

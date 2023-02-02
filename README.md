@@ -147,8 +147,7 @@ dan fungsi masing-masing dari method itu, yaitu:
 |method|return|kegunaan|
 |------|------|--------|
 |`uploadFile`|`String`|Method untuk melakukan upload file, dan return berupa `fileId`|
-|`getPublicUrlFile`|`String`|Method untuk mendapatkan link url yang dapat diakses public, dan return berpupa `url`. *
-note: beberapa storage tidak support fungsi ini*|
+|`getPublicUrlFile`|`String`|Method untuk mendapatkan link url yang dapat diakses public, dan return berpupa `url`. *note: beberapa storage tidak support fungsi ini*|
 |`downloadFile`|`ByteArrayResource`|Method untuk melakukan download file, dan return berupa file yang dipake controller untuk mendownload filenya|
 |`deleteFile`|`void`|Method untuk menghapus file yang ada pada storage|
 
@@ -191,23 +190,32 @@ amazon:
   aws-secret-key: xxx
   aws-region: ap-southeast-3
   bucket-name: ait-fileservice-demo
+  presign-url-duration: 60
 ```
 
 .properties:
 
 ```properties
-amazon.access-key: xxx
-amazon.aws-secret-key: xxx
-amazon.aws-region: ap-southeast-3
-amazon.bucket-name: ait-fileservice-demo
+
+amazon.access-key= xxx
+amazon.aws-secret-key= xxx
+amazon.aws-region= ap-southeast-3
+amazon.bucket-name= ait-fileservice-demo
+amazon.presign-url-duration= 60
+
 ```
+
+|properties|data type|description|
+|----------|---------|-----------|
+|`access-key`|`String`|access key didapat dari AWS|
+|`aws-secret-key`|`String`|Secret Key yang didapat dari AWS|
+|`aws-region`|`String`|AWS Region yang digunakan, harus sesuai dengan yang ada pada list berikut [Link](https://docs.aws.amazon.com/general/latest/gr/s3.html)|
+|`bucket-name`|`String`|Nama bucket yang digunakan|
+|`presign-url-duration`|`Int`|Durasi lama presign url, satuan dalam menit|
 
 ###how to get value?
 
 link: [Link](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html)
-
-###Important note
-- Untuk upload public access perlu di set dari bucket s3
 
 ## Alibaba OSS
 
