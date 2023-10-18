@@ -16,4 +16,5 @@ public class AzureStorageProp {
   private String clientId;
   private String clientSecret;
   private String tenantId;
+  private String sasToken;
 }

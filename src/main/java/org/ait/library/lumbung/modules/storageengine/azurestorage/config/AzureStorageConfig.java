@@ -10,7 +10,6 @@ import org.ait.library.lumbung.config.GlobalConfig;
 import org.ait.library.lumbung.modules.storageengine.azurestorage.service.AzureStorageService;
 import org.ait.library.lumbung.shared.enums.PlatformEnum;
 import org.ait.library.lumbung.shared.serviceskelenton.EngineStorageService;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,6 +22,15 @@ public class AzureStorageConfig {
   private final AzureStorageProp azureStorageProp;
 
   private BlobContainerClient createBlobServiceClient() {
+
+    if(azureStorageProp.getSasToken() != null && !azureStorageProp.getSasToken().isBlank()){
+      return createClientWithSasToken();
+    }else{
+      return createClientWithClientId();
+    }
+  }
+
+  private BlobContainerClient createClientWithClientId() {
     ClientSecretCredential clientSecretCredential = new ClientSecretCredentialBuilder()
         .clientId(azureStorageProp.getClientId())
         .clientSecret(azureStorageProp.getClientSecret())
@@ -32,6 +40,14 @@ public class AzureStorageConfig {
     return new BlobServiceClientBuilder()
         .connectionString(azureStorageProp.getEndpoint())
         .credential(clientSecretCredential)
+        .buildClient()
+        .createBlobContainer(azureStorageProp.getBlobContainer());
+  }
+
+  private BlobContainerClient createClientWithSasToken(){
+    return new BlobServiceClientBuilder()
+        .connectionString(azureStorageProp.getEndpoint())
+        .sasToken(azureStorageProp.getSasToken())
         .buildClient()
         .createBlobContainer(azureStorageProp.getBlobContainer());
   }

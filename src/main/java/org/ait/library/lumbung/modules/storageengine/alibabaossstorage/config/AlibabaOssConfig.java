@@ -8,7 +8,6 @@ import org.ait.library.lumbung.config.GlobalConfig;
 import org.ait.library.lumbung.modules.storageengine.alibabaossstorage.service.AlibabaStorageService;
 import org.ait.library.lumbung.shared.enums.PlatformEnum;
 import org.ait.library.lumbung.shared.serviceskelenton.EngineStorageService;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
