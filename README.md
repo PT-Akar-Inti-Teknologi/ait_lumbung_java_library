@@ -213,12 +213,43 @@ amazon.presign-url-duration= 60
 |`bucket-name`|`String`|Nama bucket yang digunakan|
 |`presign-url-duration`|`Int`|Durasi lama presign url, satuan dalam menit|
 
-###how to get value?
+### how to get value?
 
 link: [Link](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html)
 
 ## Alibaba OSS
 
 ## Azure Blob Storage
+
+
+.yml:
+
+```yaml
+azure:
+  endpoint: https://<storage-account-name>.blob.core.windows.net/
+  blob-container: blob-container
+  sas-token: sasToken
+```
+
+.properties:
+
+```properties
+azure.endpoint= https://<storage-account-name>.blob.core.windows.net/
+azure.blob-container= blob-container
+azure.sas-token= sasToken
+
+```
+
+| properties             |data type| description                                       |
+|------------------------|---------|---------------------------------------------------|
+| `endpoint`             |`String`| endpoint to azure blob                            |
+| `blob-container`       |`String`| blob container (harus dibuat terlebih dahulu)     |
+| `sas-token`            |`String`| sas token yang digunakan sebagai credential akses |
+
+
+### how to get value?
+
+
+
 
 ## Hitachi Cloud Platform Storage 
