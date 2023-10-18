@@ -249,7 +249,7 @@ azure.sas-token= sasToken
 
 ### how to get value?
 
-
+link: https://learn.microsoft.com/en-us/azure/data-explorer/kusto/api/connection-strings/generate-sas-token
 
 
 ## Hitachi Cloud Platform Storage 
