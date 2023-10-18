@@ -50,10 +50,6 @@ amazon:
 azure:
   endpoint: https://<storage-account-name>.blob.core.windows.net/
   blob-container: blob-container
-  client-id: client-id
-  client-secret: client-secret
-  tenant-id: tenant-id
-  #Optional
   sas-token: sasToken
 
 # HCP Storage

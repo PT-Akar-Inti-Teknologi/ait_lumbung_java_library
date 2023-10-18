@@ -13,8 +13,5 @@ public class AzureStorageProp {
 
   private String endpoint;
   private String blobContainer;
-  private String clientId;
-  private String clientSecret;
-  private String tenantId;
   private String sasToken;
 }

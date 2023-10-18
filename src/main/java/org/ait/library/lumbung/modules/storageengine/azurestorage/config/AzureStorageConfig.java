@@ -22,39 +22,11 @@ public class AzureStorageConfig {
   private final AzureStorageProp azureStorageProp;
 
   private BlobContainerClient createBlobServiceClient() {
-
-    if(azureStorageProp.getSasToken() != null && !azureStorageProp.getSasToken().isBlank()){
-      return createClientWithSasToken();
-    }else{
-      return createClientWithClientId();
-    }
-  }
-
-  private BlobContainerClient createClientWithClientId() {
-    ClientSecretCredential clientSecretCredential = new ClientSecretCredentialBuilder()
-        .clientId(azureStorageProp.getClientId())
-        .clientSecret(azureStorageProp.getClientSecret())
-        .tenantId(azureStorageProp.getTenantId())
-        .build();
-
-    BlobContainerClient blobContainerClient = new BlobServiceClientBuilder()
-        .endpoint(azureStorageProp.getEndpoint())
-        .credential(clientSecretCredential)
-        .buildClient()
-        .getBlobContainerClient(azureStorageProp.getBlobContainer());
-
-    return blobContainerClient;
-  }
-
-  private BlobContainerClient createClientWithSasToken(){
-
-    BlobContainerClient blobContainerClient = new BlobServiceClientBuilder()
+    return new BlobServiceClientBuilder()
         .endpoint(azureStorageProp.getEndpoint())
         .sasToken(azureStorageProp.getSasToken())
         .buildClient()
         .getBlobContainerClient(azureStorageProp.getBlobContainer());
-
-    return blobContainerClient;
   }
 
   @Bean
