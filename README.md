@@ -216,6 +216,7 @@ amazon.presign-url-duration= 60
 ### how to get value?
 
 link: [Link](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html)
+
 ![Identity and access management in Amazon S3](https://docs.aws.amazon.com/images/AmazonS3/latest/userguide/images/AccessControlAuthorizationFlowBucketResource.png)
 
 ## Alibaba OSS
@@ -251,6 +252,7 @@ azure.sas-token= sasToken
 ### how to get value?
 
 link: [link](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/api/connection-strings/generate-sas-token)
+
 ![Genearate SAS Token and URL](https://learn.microsoft.com/en-us/azure/data-explorer/kusto/api/connection-strings/storage/copy-sas-token-and-url.png)
 
 ## Hitachi Cloud Platform Storage 
