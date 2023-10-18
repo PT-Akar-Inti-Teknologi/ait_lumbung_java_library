@@ -42,7 +42,7 @@ public class AzureStorageService extends EngineStorageAbstract {
       throw new CannotUploadFileException(e.getMessage());
     }
 
-    return fileDir;
+    return fileId;
   }
 
   @Override

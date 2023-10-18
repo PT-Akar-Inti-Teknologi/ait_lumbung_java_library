@@ -1,1 +1,4 @@
-mvn install:install-file -Dfile="TargetJar" -DgroupId=org.ait.library -DartifactId=lumbung -Dversion=0.0.1-BETA -Dpackaging=jar -DpomFile="TargetPom"
+mvn install:install-file -Dfile="TargetJar" -DgroupId="org.ait.library" -DartifactId="lumbung" -Dversion=0.0.1-BETA -Dpackaging=jar -DpomFile="TargetPom"
+
+contoh:
+mvn install:install-file -Dfile="E:/Workspace/Inspira/A Module Project/File Storage/filestorage/target/lumbung-0.0.1-BETA.jar" -DgroupId="org.ait.library" -DartifactId="lumbung" -Dversion="0.0.1-BETA" -Dpackaging=jar -DpomFile="E:/Workspace/Inspira/A Module Project/File Storage/filestorage/pom.xml"
